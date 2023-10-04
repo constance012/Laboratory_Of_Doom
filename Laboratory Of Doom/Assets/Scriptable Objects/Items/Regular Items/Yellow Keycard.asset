@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce8666ab7fcfbb41a35884b134fdb3c, type: 3}
+  m_Name: Yellow Keycard
+  m_EditorClassIdentifier: 
+  id: 
+  slotIndex: -1
+  category: 9
+  itemName: Yellow Keycard
+  description: A keycard found in the lab, maybe there's a thing needed it, somewhere.
+  icon: {fileID: 1627922647, guid: d1a713718b1d3fa4990981f2a884bbe4, type: 3}
+  rarity:
+    title: Unique
+    color: {r: 0.8509804, g: 0.77254903, b: 0.09803922, a: 1}
+  stackable: 0
+  maxPerStack: 1
+  quantity: 1
+  isFavorite: 0
+  isDefaultItem: 0
+  canBeUsed: 0

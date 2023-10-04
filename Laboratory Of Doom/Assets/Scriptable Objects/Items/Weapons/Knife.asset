@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef813d71644459e4487bda0b790bf694, type: 3}
+  m_Name: Knife
+  m_EditorClassIdentifier: 
+  id: 
+  slotIndex: 1
+  category: 2
+  itemName: Knife
+  description: A sharp and handy knife, perfect for close combat situations.
+  icon: {fileID: -1666080896, guid: d1a713718b1d3fa4990981f2a884bbe4, type: 3}
+  rarity:
+    title: Special
+    color: {r: 0.7264151, g: 0.32807112, b: 0.16104485, a: 1}
+  stackable: 0
+  maxPerStack: 1
+  quantity: 1
+  isFavorite: 0
+  isDefaultItem: 0
+  canBeUsed: 0
+  type: 0
+  weaponSlot: 1
+  useType: 0
+  baseDamage: 3
+  range: 0.7
+  useSpeed: 0.35
+  impactEffect: {fileID: 0}

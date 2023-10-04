@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0077454f4fd4341adca1419188c20c, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  id: 06033233-d003-4cbf-b7a7-d358723765f6
+  slotIndex: 0
+  category: 2
+  itemName: Pistol
+  description: A good self-defense weapon, can engage target from afar. But you only
+    carried a handful of rounds, so use it wisely.
+  icon: {fileID: 2047774957, guid: d1a713718b1d3fa4990981f2a884bbe4, type: 3}
+  rarity:
+    title: Special
+    color: {r: 0.7254902, g: 0.32941177, b: 0.16078432, a: 1}
+  stackable: 0
+  maxPerStack: 1
+  quantity: 1
+  isFavorite: 0
+  isDefaultItem: 0
+  canBeUsed: 0
+  type: 1
+  weaponSlot: 0
+  useType: 1
+  baseDamage: 5
+  range: 15
+  useSpeed: 0.5
+  impactEffect: {fileID: 0}
+  rangedWeaponType: 3
+  bulletTracer: {fileID: 439671133536590696, guid: b6644b520e49d1f4a83cbe6108206801, type: 3}
+  bulletSpeed: 800
+  bulletMaxLifeTime: 3
+  verticalSpread: 0.2
+  impactForce: 5
+  bulletsPerShot: 1
+  infiniteAmmo: 0
+  reserveAmmo: 36
+  <MagazineCapacity>k__BackingField: 12
+  currentAmmo: 12
+  reloadTime: 1.5
+  isReloading: 0
+  promptReload: 0
