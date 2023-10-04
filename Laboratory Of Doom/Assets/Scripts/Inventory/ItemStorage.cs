@@ -23,12 +23,11 @@ public abstract class ItemStorage : MonoBehaviour
 
 	protected bool AddToList(List<Item> items, Item target, bool forcedSplit, out bool outOfSpace)
 	{
-		if (items.Count >= space)
+		if (items.Count >= space && !HasAny(target.itemName))
 		{
 			Debug.LogWarning("This storage ran out of space.", this);
-
 			outOfSpace = true;
-			
+
 			return false;
 		}
 
@@ -84,12 +83,18 @@ public abstract class ItemStorage : MonoBehaviour
 						break;
 				}
 
-				// If there's a residue or this is a completely different item. Then add it to the list.
-				if (target.quantity > 0)
+				// If there's a residue or this is a completely different item and the inventory is not full. Then add it to the list.
+				if (target.quantity > 0 && items.Count < space)
+				{
 					items.Add(target);
-
-				onItemChanged?.Invoke();
-				return true;
+					onItemChanged?.Invoke();
+					return true;
+				}
+				else if (items.Count >= space)
+				{
+					onItemChanged?.Invoke();
+					return false;
+				}
 			}
 
 			// If it's a completely new item or forced to split the same item, then just add it into the list.
@@ -114,6 +119,8 @@ public abstract class ItemStorage : MonoBehaviour
 	public abstract Item GetItem(string targetID);
 
 	public abstract Item GetItemByName(string targetName);
+
+	public abstract Item[] GetItemsByName(string targetName);
 
 	public abstract bool HasAny(string targetName);
 

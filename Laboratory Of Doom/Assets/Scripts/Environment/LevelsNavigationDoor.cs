@@ -12,7 +12,7 @@ public class LevelsNavigationDoor : Interactable
 	[SerializeField] private TextMeshProUGUI _levelNameText;
 
 	[Header("Status"), Space]
-	[SerializeField, ReadOnly] private bool isOpened;
+	[ReadOnly] public bool isOpened;
 
 	[Header("Door Settings"), Space]
 	public Item[] keycards;

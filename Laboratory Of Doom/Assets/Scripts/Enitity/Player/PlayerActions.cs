@@ -15,17 +15,19 @@ public class PlayerActions : Singleton<PlayerActions>
 	[SerializeField] private float meleeRange;
 	[SerializeField] private float shootingRange;
 
-	[Header("References"), Space]
+	[Header("Ranged Weapon"), Space]
 	[SerializeField] private GameObject primaryWeapon;
 	[SerializeField] private Transform firePoint;
 
-	[Space]
+	[Header("Melee Weapon"), Space]
 	[SerializeField] private GameObject secondaryWeapon;
 	[SerializeField] private Transform hitPoint;
+	[SerializeField] private float hitpointXExtent;
 
+	[Header("Flashlight"), Space]
 	[SerializeField] private GameObject flashlightGameObj;
 
-	[Space]
+	[Header("UI"), Space]
 	[SerializeField] private TextMeshProUGUI gunUI;
 	[SerializeField] private TextMeshProUGUI flashlightUI;
 	[SerializeField] private Image weaponIcon;
@@ -39,8 +41,12 @@ public class PlayerActions : Singleton<PlayerActions>
 	private Weapon _currentWeapon;
 	private float _timeForNextUse;
 
+	private float _hitpointXOrigin;
+
 	private void Start()
 	{
+		_hitpointXOrigin = hitPoint.localPosition.x;
+
 		flashlightGameObj.SetActive(true);
 		primaryWeapon.SetActive(false);
 		secondaryWeapon.SetActive(false);
@@ -70,9 +76,10 @@ public class PlayerActions : Singleton<PlayerActions>
 			return;
 		}
 
+		flashlightUI.text = "OFF";
+		
 		if (flashlight.OutOfBattery)
 		{
-			flashlightUI.text = "OFF";
 			return;
 		}
 
@@ -152,6 +159,11 @@ public class PlayerActions : Singleton<PlayerActions>
 		switch (_currentWeapon.type)
 		{
 			case WeaponType.Melee:
+				float t = Mathf.Abs(Mathf.Sin(transform.eulerAngles.z * Mathf.Deg2Rad));
+				
+				float x = Mathf.Lerp(_hitpointXOrigin, hitpointXExtent, t);
+				hitPoint.localPosition = new Vector3(x, 0f, 0f);
+
 				if (Input.GetButtonDown("Fire1") && _timeForNextUse <= 0f)
 				{
 					AudioManager.Instance.Play("Knife Thrust");

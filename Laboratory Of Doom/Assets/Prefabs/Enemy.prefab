@@ -128,7 +128,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005956769, y: 0.00035977364}
+  m_Offset: {x: 0.0015223026, y: -0.0029497445}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0200737, y: 2.0343642}
+  m_Size: {x: 0.8056741, y: 1.9579406}
   m_EdgeRadius: 0
 --- !u!61 &6752721037948780735
 BoxCollider2D:
@@ -203,6 +203,10 @@ MonoBehaviour:
   dmgTextPrefab: {fileID: 1002002582291494483, guid: 9ff9d997ae0eece43bd7c796120c95db, type: 3}
   dmgTextLoc: {fileID: 1853648545714090904}
   damage: 3
+  attackRange: {x: 0.8, y: 1.95}
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 1088
   damageFlashTime: 0.2
 --- !u!114 &7935642385781397333
 MonoBehaviour:

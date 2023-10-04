@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerStats : Entity
@@ -31,7 +32,9 @@ public class PlayerStats : Entity
 	protected override void Start()
 	{
 		base.Start();
+
 		_invincibilityTime = invincibilityTime;
+		IsDeath = false;
 	}
 
 	private void Update()
@@ -81,12 +84,9 @@ public class PlayerStats : Entity
 
 			GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
 			effect.transform.localScale = transform.localScale;
-
-			// Destroy effect here.
 		}
 
 		GameManager.Instance.ShowGameOverScreen();
-		Debug.Log("Player Hit");
 
 		gameObject.SetActive(false);
 	}

@@ -922,8 +922,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.025249988, y: -0.06524998, z: 0}
-    m_Extent: {x: 0.68055, y: 1.3684499, z: 0}
+    m_Center: {x: 0.030299991, y: -0.07139999, z: 0}
+    m_Extent: {x: 0.67579997, y: 1.3659999, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.28
@@ -1113,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 1e-45, y: 0.00000002168095, z: 0, w: 1}
-  m_LocalPosition: {x: -6.0400004, y: 0.92500013, z: -10}
+  m_LocalPosition: {x: -6.520001, y: 1.1900002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2463,7 +2463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022249943}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.04, y: 0.925, z: 0}
+  m_LocalPosition: {x: -6.52, y: 1.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2610,7 +2610,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: -0.01950705}
+  m_Offset: {x: 0.00000023841858, y: -0.013782859}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2621,7 +2621,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5968528, y: 1.9363425}
+  m_Size: {x: 0.5968528, y: 1.9248941}
   m_EdgeRadius: 0
 --- !u!1 &1039910518
 GameObject:
@@ -2958,7 +2958,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359357296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.022, y: -0.017, z: 0}
+  m_LocalPosition: {x: 0.16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4236,12 +4236,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed5b2a0cc3aa014db523752dd182a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeRange: 0.8
+  meleeRange: 0.4
   shootingRange: 15
   primaryWeapon: {fileID: 33203596}
   firePoint: {fileID: 1008835309}
   secondaryWeapon: {fileID: 1521159614}
   hitPoint: {fileID: 1359357297}
+  hitpointXExtent: 0.6
   flashlightGameObj: {fileID: 1922293587}
   gunUI: {fileID: 1534483951}
   flashlightUI: {fileID: 2099822972}
@@ -4693,7 +4694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084302956}
   m_LocalRotation: {x: 1e-45, y: 0.00000002168095, z: 0, w: 1}
-  m_LocalPosition: {x: -6.0400004, y: 0.92500013, z: -10}
+  m_LocalPosition: {x: -6.520001, y: 1.1900002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

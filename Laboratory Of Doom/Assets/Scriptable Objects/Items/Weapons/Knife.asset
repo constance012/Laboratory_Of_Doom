@@ -31,6 +31,6 @@ MonoBehaviour:
   weaponSlot: 1
   useType: 0
   baseDamage: 3
-  range: 0.7
+  range: 0.4
   useSpeed: 0.35
   impactEffect: {fileID: 0}

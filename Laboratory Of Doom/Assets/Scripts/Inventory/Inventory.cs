@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CSTGames.DataPersistence;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler, IPointerExitHandler
 {
@@ -49,7 +50,7 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 		base.Awake();
 	}
 
-	private void Start()
+	private IEnumerator Start()
 	{
 		if (!_initializeOnStartup)
 		{
@@ -75,6 +76,9 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 				flashLight.IsTurnedOn = true;
 				PlayerActions.flashlight = flashLight;
 			}
+
+			yield return new WaitForSecondsRealtime(.1f);
+			PlayerActions.Instance.SwitchWeapon(0);
 
 			_initializeOnStartup = true;
 		}
@@ -134,6 +138,11 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 	public override Item GetItemByName(string targetName)
 	{
 		return items.Find(item => item.itemName.Equals(targetName));
+	}
+
+	public override Item[] GetItemsByName(string targetName)
+	{
+		return items.FindAll(item => item.itemName.Equals(targetName)).ToArray();
 	}
 
 	public override bool HasAny(string targetName)

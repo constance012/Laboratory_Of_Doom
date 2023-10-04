@@ -44,7 +44,6 @@ public class GameManager : Singleton<GameManager>
 
 	public void RestartGame()
 	{
-		PlayerStats.IsDeath = false;
 		GameDone = false;
 
 		LevelsManager.Instance.LoadSceneAsync("Scenes/Base Scene");
