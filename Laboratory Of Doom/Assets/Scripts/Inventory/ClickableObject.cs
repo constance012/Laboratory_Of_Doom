@@ -101,7 +101,10 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		if (eventData.button == PointerEventData.InputButton.Right && !_isLeftAltHeld && !_isLeftControlHeld)
+		{
 			_currentSlot?.UseItem();
+			CleanUpStatics();
+		}
 
 		if (eventData.button == PointerEventData.InputButton.Left && _isLeftControlHeld)
 			DisposeItem();

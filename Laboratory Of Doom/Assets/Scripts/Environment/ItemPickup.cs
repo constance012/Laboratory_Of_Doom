@@ -98,5 +98,8 @@ public class ItemPickup : Interactable
 
 			Destroy(gameObject);
 		}
+
+		if (_currentItem.quantity <= 0)
+			Destroy(gameObject);
 	}
 }

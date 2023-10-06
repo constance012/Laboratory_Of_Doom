@@ -93,6 +93,7 @@ public abstract class ItemStorage : MonoBehaviour
 				else if (items.Count >= space)
 				{
 					onItemChanged?.Invoke();
+					outOfSpace = true;
 					return false;
 				}
 			}
