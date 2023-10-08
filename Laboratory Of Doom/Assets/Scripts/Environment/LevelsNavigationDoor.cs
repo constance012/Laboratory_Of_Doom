@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TMPro;
-using CSTGames.CommonEnums;
 using System.Linq;
 
 public class LevelsNavigationDoor : Interactable
@@ -26,7 +25,6 @@ public class LevelsNavigationDoor : Interactable
 	// Private fields.
 	private Transform _enemiesContainer;
 	private BoxCollider2D _collider;
-	private IEnumerator _displayTextRoutine;
 
 	private bool _levelCleared;
 
@@ -47,8 +45,7 @@ public class LevelsNavigationDoor : Interactable
 			_levelNameText = GameObject.FindWithTag("LevelNameText").GetComponent<TextMeshProUGUI>();
 			_levelNameText.text = LevelsManager.Instance.CurrentScene.name.ToUpper();
 
-			_displayTextRoutine = DisplayLevelText();
-			StartCoroutine(_displayTextRoutine);
+			StartCoroutine(DisplayLevelText());
 		}
 
 		spriteRenderer.sprite = closeSprite;
@@ -64,11 +61,10 @@ public class LevelsNavigationDoor : Interactable
 
 		if (_levelCleared != isCleared)
 		{
-			_levelCleared = isCleared;
+			_levelCleared = true;
 			_levelNameText.text = "<color=#C88529> THANK YOU! </color> FOR RELEASING OUR SOULS";
 
-			StopCoroutine(_displayTextRoutine);
-			StartCoroutine(_displayTextRoutine);
+			StartCoroutine(DisplayLevelText());
 		}
 	}
 
@@ -169,7 +165,5 @@ public class LevelsNavigationDoor : Interactable
 		textAnim.Play("Decrease Alpha");
 
 		yield return new WaitForSecondsRealtime(.75f);
-
-		_levelNameText.text = LevelsManager.Instance.CurrentScene.name.ToUpper();
 	}
 }

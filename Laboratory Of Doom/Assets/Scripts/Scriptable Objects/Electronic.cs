@@ -1,7 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Base Weapon", menuName = "Inventory/Electronic")]
+[CreateAssetMenu(fileName = "New Electronic", menuName = "Inventory/Electronic")]
 public class Electronic : Item
 {
 	[Header("Battery"), Space]
@@ -26,7 +25,7 @@ public class Electronic : Item
 	public override string ToString()
 	{
 		return base.ToString() + "\n" +
-				$"Remaining battery: {currentBatteryLife.ToString("0.0")}%\n" +
-				$"Press {InputManager.Instance.GetKeyForAction(KeybindingActions.Flashlight)} to turn ON / OFF.";
+				$"<b> Remaining battery: {currentBatteryLife.ToString("0.0")}% </b>\n" +
+				$"<b> Press {InputManager.Instance.GetKeyForAction(KeybindingActions.Flashlight)} to turn ON / OFF. </b>";
 	}
 }

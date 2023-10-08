@@ -6,21 +6,21 @@ namespace CSTGames.Utility
 	/// <summary>
 	/// Provides some useful methods for manipulating Strings.
 	/// </summary>
-	public static class StringManipulator
+	public static class StringExtensions
 	{
-		public static string AddWhitespaceBeforeCapital(string str)
+		public static string AddWhitespaceBeforeCapital(this string str)
 		{
 			return String.Concat(str.Select(x => Char.IsUpper(x) ? " " + x : x.ToString()))
 									.TrimStart(' ');
 		}
 
-		public static string AddHyphenBeforeNumber(string str)
+		public static string AddHyphenBeforeNumber(this string str)
 		{
 			return String.Concat(str.Select(x => Char.IsDigit(x) ? "-" + x : x.ToString()))
 									.TrimStart('-');
 		}
 
-		public static string ClearWhitespaces(string str)
+		public static string ClearWhitespaces(this string str)
 		{
 			return new string(str.ToCharArray()
 				.Where(c => !Char.IsWhiteSpace(c))

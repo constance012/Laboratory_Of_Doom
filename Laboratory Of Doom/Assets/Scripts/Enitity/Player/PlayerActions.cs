@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using CSTGames.CommonEnums;
 using static Weapon;
 
 public class PlayerActions : Singleton<PlayerActions>

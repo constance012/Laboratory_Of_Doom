@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Food", menuName = "Inventory/Food")]
-public class Food : Item
+[CreateAssetMenu(fileName = "New Consumable", menuName = "Inventory/Consumable")]
+public class Consumable : Item
 {
 	[Header("Healing amount"), Space]
 	public int healingAmount;
@@ -18,7 +18,7 @@ public class Food : Item
 	public override string ToString()
 	{
 		return base.ToString() + "\n" +
-				$"+{healingAmount} HP.\n" +
-				$"Right Click to use.";
+				$"<b> +{healingAmount} HP. </b>\n" +
+				$"<b> Right Click to use. </b>";
 	}
 }

@@ -36,6 +36,6 @@ public class Weapon : Item
 	{
 		return base.ToString() + "\n" +
 				$"{weaponSlot} weapon.\n" +
-				$"Base Damage: {baseDamage}";
+				$"<b> Base Damage: {baseDamage} </b>";
 	}
 }

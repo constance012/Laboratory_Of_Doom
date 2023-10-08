@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   slotIndex: -1
-  category: 3
+  category: 4
   itemName: Bandage
   description: A strip of adhesive material used to bind a wound or to protect an
     injured part of the body.

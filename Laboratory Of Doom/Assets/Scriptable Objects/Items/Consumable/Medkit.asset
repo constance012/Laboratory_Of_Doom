@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   slotIndex: -1
-  category: 3
+  category: 4
   itemName: Medkit
   description: A small bag containing medical supplies used to treat bigger wounds
     and major injury.

@@ -50,7 +50,7 @@ public class RangedWeapon : Weapon
 	public override string ToString()
 	{
 		return base.ToString() + "\n" +
-				$"Ammo: {currentAmmo} / {reserveAmmo}";
+				$"<b> Ammo: {currentAmmo} / {reserveAmmo} </b>";
 	}
 
 	#region Bullets Management.

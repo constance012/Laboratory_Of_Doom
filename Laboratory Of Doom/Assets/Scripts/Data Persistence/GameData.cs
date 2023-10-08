@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using CSTGames.CommonEnums;
 
 namespace CSTGames.DataPersistence
 {

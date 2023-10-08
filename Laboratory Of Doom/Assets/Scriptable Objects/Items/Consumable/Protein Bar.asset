@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   slotIndex: -1
-  category: 3
+  category: 4
   itemName: Protein Bar
   description: An energy bar which can deliver the needed nutrients and powerful
     punch of protein while still tasting great.

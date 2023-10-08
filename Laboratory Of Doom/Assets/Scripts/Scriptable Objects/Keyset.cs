@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 using CSTGames.DataPersistence;
-using CSTGames.CommonEnums;
+
 
 /// <summary>
 /// A scriptable object for creating a set of keys use in keybinding.

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   slotIndex: -1
-  category: 9
+  category: 11
   itemName: Green Keycard
   description: A keycard found in the lab, maybe there's a thing needed it, somewhere.
   icon: {fileID: -945896817, guid: d1a713718b1d3fa4990981f2a884bbe4, type: 3}

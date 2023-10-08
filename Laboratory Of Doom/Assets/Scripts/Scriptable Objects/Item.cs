@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using CSTGames.CommonEnums;
 using CSTGames.DataPersistence;
+using CSTGames.Utility;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/New Base Item")]
 public class Item : ScriptableObject
@@ -61,7 +61,7 @@ public class Item : ScriptableObject
 	public override string ToString()
 	{
 		return $"Rarity: <b><color=#{ColorUtility.ToHtmlStringRGB(rarity.color)}> {rarity.title} </color></b>\n" +
-				$"Category: {category}.\n" +
+				$"Category: <b> {category.ToString().AddWhitespaceBeforeCapital()} </b>\n" +
 				$"{description}";
 	}
 
@@ -75,4 +75,20 @@ public class Item : ScriptableObject
 		this.quantity = saveData.quantity;
 		this.isFavorite = saveData.isFavorite;
 	}
+}
+
+public enum ItemCategory
+{
+	Null,
+	Equipment,
+	Weapon,
+	Electronic,
+	Consumable,
+	Potion,
+	Material,
+	Mineral,
+	MonsterPart,
+	Coin,
+	Special,
+	KeyItem
 }

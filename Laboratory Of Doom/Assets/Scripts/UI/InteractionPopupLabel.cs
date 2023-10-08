@@ -1,5 +1,4 @@
-﻿using CSTGames.CommonEnums;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using static Interactable;
 
