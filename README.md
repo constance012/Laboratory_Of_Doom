@@ -1,6 +1,6 @@
 # Laboratory_Of_Doom
 
-An entry for Ludum Dare Jam on Septemper 29, 2023.  
+An entry for Ludum Dare 54 on Septemper 29, 2023.  
 __THEME: LIMITED SPACE__
 
 ## __DESCRIPTION__

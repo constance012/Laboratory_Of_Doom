@@ -34,6 +34,9 @@ public class GameManager : Singleton<GameManager>
 		inventoryCanvas.alpha = state ? 1f : 0f;
 		inventoryCanvas.blocksRaycasts = state;
 		inventoryCanvas.interactable = state;
+
+		if (!state)
+			Inventory.Instance.OnToggleOff();
 	}
 
 	public void UpdatePlayerHealth(int maxHP, int currentHP)

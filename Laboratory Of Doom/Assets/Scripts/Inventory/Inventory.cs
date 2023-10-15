@@ -28,12 +28,6 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 	private InventorySlot[] _slots;
 	private bool _initializeOnStartup;
 
-	private void OnDisable()
-	{
-		TooltipHandler.Hide();
-		insideInventory = false;
-	}
-
 	protected override void Awake()
 	{
 		if (Instance == null)
@@ -91,6 +85,13 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
+		insideInventory = false;
+	}
+
+	public void OnToggleOff()
+	{
+		Debug.Log("Inventory disabled.");
+		ClickableObject.CleanUpStatics();
 		insideInventory = false;
 	}
 

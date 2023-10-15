@@ -922,8 +922,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.030750006, y: -0.075999975, z: 0}
-    m_Extent: {x: 0.68334997, y: 1.3673, z: 0}
+    m_Center: {x: 0.025999993, y: -0.069900036, z: 0}
+    m_Extent: {x: 0.67219996, y: 1.3715, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.28
@@ -4091,26 +4091,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1793705550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: f361d95accde7c746a850376386cba66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1298407831}
-          m_TargetAssemblyTypeName: ClickableObject, Assembly-CSharp
-          m_MethodName: DisposeItem
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  heldItem: {fileID: 1298407831}
 --- !u!1 &1831258566
 GameObject:
   m_ObjectHideFlags: 0

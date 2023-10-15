@@ -109,6 +109,12 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
 	}
 
 	#region Item Manipulation.
+	public static void UseCurrentlyHoldingItem()
+	{
+		Sender._currentSlot.UseItem();
+		CleanUpStatics();
+	}
+
 	public void DisposeItem()
 	{
 		Debug.Log("Dispose item.");
