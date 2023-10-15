@@ -1,7 +1,11 @@
-# Laboratory_Of_Doom
+# Laboratory_Of_Doom (Post-Jam Version)
 
-An entry for Ludum Dare 54 on Septemper 29, 2023.  
+This was originally an entry for Ludum Dare 54 on Septemper 29, 2023.  
 __THEME: LIMITED SPACE__
+
+But since the submission deadline has ended, this is the __post-jam version__ where I develop new features and expand the game further for future releases.
+
+You can find the original jam version at the `jam-original` branch.
 
 ## __DESCRIPTION__
 You’re a private detective who gets to investigate about an unknown substance being experimented on humans that turned them into atrocious monsters. Because of the urge to find the truth behind all of this and bring it to the light, you went to an abandoned laboratory in which the evidences led to. But little that you know, what’s lurking behind the darkness is far more the you could imagine.
