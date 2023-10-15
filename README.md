@@ -3,7 +3,8 @@
 An entry for Ludum Dare 54 on Septemper 29, 2023.  
 __THEME: LIMITED SPACE__
 
-__NOTE:__ This branch is __READ-ONLY__, which means there's no more updates or commits will be made in order to preserve the original version used in the jam.  
+__NOTE:__ This branch is __READ-ONLY__, which means there's no more updates or commits will be made in order to preserve the original version used in the jam.
+
 Switch to the `post-jam` branch to view the latest version of this game, which will be released as a full game in the future.
 
 ## __DESCRIPTION__
