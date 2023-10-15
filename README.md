@@ -1,4 +1,4 @@
-# Laboratory_Of_Doom
+# Laboratory_Of_Doom (Original Jam Version)
 
 An entry for Ludum Dare 54 on Septemper 29, 2023.  
 __THEME: LIMITED SPACE__
