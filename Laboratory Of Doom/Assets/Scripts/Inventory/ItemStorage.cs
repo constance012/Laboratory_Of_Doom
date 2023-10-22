@@ -119,11 +119,22 @@ public abstract class ItemStorage : MonoBehaviour
 
 	public abstract Item GetItem(string targetID);
 
-	public abstract Item GetItemByName(string targetName);
-
 	public abstract Item[] GetItemsByName(string targetName);
 
+	/// <summary>
+	/// Checks if the inventory has any items with the specified name.
+	/// </summary>
+	/// <param name="targetName"> The item's name to check. </param>
+	/// <returns></returns>
 	public abstract bool HasAny(string targetName);
+
+	/// <summary>
+	/// Checks if the inventory contains the item with the specified name, and retrieve the first one if it does.
+	/// </summary>
+	/// <param name="targetName"> The item's name to check. </param>
+	/// <param name="firstFound"> The first item found with the matching name, if any. </param>
+	/// <returns></returns>
+	public abstract bool HasAny(string targetName, out Item firstFound);
 
 	public abstract bool IsExisting(string targetID);
 

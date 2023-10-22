@@ -42,7 +42,7 @@ public abstract class StorageSlot : MonoBehaviour
 
 		tooltip.header = currentItem.itemName;
 		tooltip.content = currentItem.ToString();
-		tooltip.popupDelay = .5f;
+		tooltip.popupDelay = .4f;
 	}
 
 	public virtual void ClearItem()

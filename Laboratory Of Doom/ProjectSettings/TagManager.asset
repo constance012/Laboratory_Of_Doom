@@ -8,6 +8,8 @@ TagManager:
   - ItemHolder
   - EnemyContainer
   - LevelNameText
+  - WeakpointTrigger
+  - LevelWorldCanvas
   layers:
   - Default
   - TransparentFX

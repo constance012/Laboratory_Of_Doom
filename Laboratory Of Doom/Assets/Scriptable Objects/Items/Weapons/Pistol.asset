@@ -32,15 +32,14 @@ MonoBehaviour:
   weaponSlot: 0
   useType: 1
   baseDamage: 5
+  weakpointMultiplier: 2
   range: 15
+  knockBackStrength: 1
   useSpeed: 0.5
   impactEffect: {fileID: 0}
   rangedWeaponType: 3
   bulletTracer: {fileID: 439671133536590696, guid: b6644b520e49d1f4a83cbe6108206801, type: 3}
-  bulletSpeed: 800
-  bulletMaxLifeTime: 3
   verticalSpread: 0.2
-  impactForce: 5
   bulletsPerShot: 1
   infiniteAmmo: 0
   reserveAmmo: 36

@@ -1,37 +1,95 @@
+using System.Collections;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
-    [Header("General Stats"), Space]
-    public int maxHealth;
-    public GameObject deathEffect;
+	[Header("Component References"), Space]
+	[SerializeField] protected Rigidbody2D rb2D;
+	[SerializeField] protected MonoBehaviour movementBehaviour;
 
-    protected int _currentHealth;
+	[Header("Damage Text"), Space]
+	[SerializeField] protected GameObject dmgTextPrefab;
+	[SerializeField] protected Transform dmgTextLoc;
 
-    protected virtual void Start()
-    {
-        _currentHealth = maxHealth;
-    }
+	[Header("Base Stats"), Space]
+	[SerializeField] protected int maxHealth;
+	[SerializeField] protected float damageFlashTime;
+	[SerializeField] protected float knockBackRes;
 
-    public virtual void TakeDamage(int amount)
-    {
+	[Header("Effects"), Space]
+	public GameObject deathEffect;
+
+	// Protected fields.
+	protected Material _mat;
+	protected int _currentHealth;
+
+	protected virtual void Start()
+	{
+		_currentHealth = maxHealth;
+	}
+
+	public virtual void TakeDamage(int amount, bool weakpointHit, Vector3 attackerPos = default, float knockBackStrength = 0f)
+	{
 		AudioManager.Instance.PlayWithRandomPitch("Taking Damage", .7f, 1.2f);
+		
 		_currentHealth -= amount;
+		_currentHealth = Mathf.Max(0, _currentHealth);
 
-        if (_currentHealth <= 0)
-            Die();
-    }
+		DamageText.Generate(dmgTextPrefab, dmgTextLoc.position, weakpointHit, amount.ToString());
 
-    public virtual void Die()
-    {
-        if (deathEffect != null)
-        {
-            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-            effect.transform.localScale = transform.localScale;
-            
-            // Destroy effect here.
-        }
+		StartCoroutine(TriggerDamageFlash());
+		StartCoroutine(BeingKnockedBack(attackerPos, knockBackStrength));
 
-        Destroy(gameObject);
-    }
+		if (_currentHealth <= 0)
+			Die();
+	}
+
+	public virtual void Die()
+	{
+		if (deathEffect != null)
+		{
+			GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+			effect.transform.localScale = transform.localScale;
+			
+			// Destroy effect here.
+		}
+
+		Destroy(gameObject);
+	}
+
+	protected IEnumerator TriggerDamageFlash()
+	{
+		float flashIntensity;
+		float elapsedTime = 0f;
+
+		while (elapsedTime < damageFlashTime)
+		{
+			elapsedTime += Time.deltaTime;
+
+			flashIntensity = Mathf.Lerp(1f, 0f, elapsedTime / damageFlashTime);
+			_mat.SetFloat("_FlashIntensity", flashIntensity);
+
+			yield return null;
+		}
+	}
+
+	protected IEnumerator BeingKnockedBack(Vector3 attackerPos, float strength)
+	{
+		if (attackerPos == default)
+			yield break;
+
+		rb2D.velocity = Vector3.zero;
+		movementBehaviour.enabled = false;
+
+		Vector2 direction = transform.position - attackerPos;
+		float knockBackStrength = strength * (1f - knockBackRes);
+
+		Vector2 force = direction.normalized * knockBackStrength;
+
+		rb2D.AddForce(force, ForceMode2D.Impulse);
+
+		yield return new WaitForSeconds(.3f);
+
+		movementBehaviour.enabled = true;
+	}
 }

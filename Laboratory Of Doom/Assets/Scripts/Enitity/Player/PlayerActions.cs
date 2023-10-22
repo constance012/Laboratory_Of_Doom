@@ -21,13 +21,14 @@ public class PlayerActions : Singleton<PlayerActions>
 	[Header("Melee Weapon"), Space]
 	[SerializeField] private GameObject secondaryWeapon;
 	[SerializeField] private Transform hitPoint;
-	[SerializeField] private float hitpointXExtent;
+	[SerializeField, Tooltip("How far would the melee hit point extent vertically?")]
+	private float hitpointXExtent;
 
 	[Header("Flashlight"), Space]
 	[SerializeField] private GameObject flashlightGameObj;
 
 	[Header("UI"), Space]
-	[SerializeField] private TextMeshProUGUI gunUI;
+	[SerializeField] private TextMeshProUGUI weaponUI;
 	[SerializeField] private TextMeshProUGUI flashlightUI;
 	[SerializeField] private Image weaponIcon;
 
@@ -50,7 +51,7 @@ public class PlayerActions : Singleton<PlayerActions>
 		primaryWeapon.SetActive(false);
 		secondaryWeapon.SetActive(false);
 
-		gunUI.text = "UNARMED";
+		weaponUI.text = "UNARMED";
 		weaponIcon.gameObject.SetActive(false);
 	}
 
@@ -79,6 +80,12 @@ public class PlayerActions : Singleton<PlayerActions>
 		
 		if (flashlight.OutOfBattery)
 		{
+			if (flashlight.IsTurnedOn)
+			{
+				flashlight.IsTurnedOn = false;
+				flashlightGameObj.SetActive(false);
+			}
+
 			return;
 		}
 
@@ -114,7 +121,7 @@ public class PlayerActions : Singleton<PlayerActions>
 		// If the new weapon is the same as the current one, switch to unarmed state.
 		if (_currentWeapon == weapons[newWeaponIndex] || weapons[newWeaponIndex] == null)
 		{
-			//CursorManager.Instance.SwitchCursorTexture(CursorTextureType.Default);
+			CursorManager.Instance.SwitchCursorTexture(CursorTextureType.Default);
 			
 			primaryWeapon.SetActive(false);
 			secondaryWeapon.SetActive(false);
@@ -122,25 +129,25 @@ public class PlayerActions : Singleton<PlayerActions>
 			_currentWeapon = null;
 
 			weaponIcon.gameObject.SetActive(false);
-			gunUI.text = "UNARMED";
+			weaponUI.text = "UNARMED";
 		}
 		// Else, equip the new weapon.
 		else
 		{
-			//CursorManager.Instance.SwitchCursorTexture(CursorTextureType.Crosshair);
+			CursorManager.Instance.SwitchCursorTexture(CursorTextureType.Crosshair);
 
 			_currentWeapon = weapons[newWeaponIndex];
 
 			weaponIcon.gameObject.SetActive(true);
 			weaponIcon.sprite = _currentWeapon.icon;
 
-			if (_currentWeapon.itemName.Equals("Pistol"))
+			if (_currentWeapon.type == WeaponType.Ranged)
 			{
 				RangedWeapon weapon = _currentWeapon as RangedWeapon;
-				gunUI.text = $"{weapon.currentAmmo} / {weapon.reserveAmmo}";
+				weaponUI.text = $"{weapon.currentAmmo} / {weapon.reserveAmmo}";
 			}
-			else if (_currentWeapon.itemName.Equals("Knife"))
-				gunUI.text = "KNIFE";
+			else
+				weaponUI.text = _currentWeapon.itemName.ToUpper();
 
 			primaryWeapon.SetActive(_currentWeapon.weaponSlot == WeaponSlot.Primary);
 			secondaryWeapon.SetActive(_currentWeapon.weaponSlot == WeaponSlot.Secondary);
@@ -187,14 +194,12 @@ public class PlayerActions : Singleton<PlayerActions>
 		}
 	}
 
+	/// <summary>
+	/// Method for animation event.
+	/// </summary>
 	public void KnifeThrust()
 	{
-		Collider2D[] hitList = Physics2D.OverlapCircleAll(hitPoint.position, _currentWeapon.range, enemyLayer);
-
-		foreach (Collider2D enemy in hitList)
-		{
-			enemy.GetComponent<Enemy>().TakeDamage(_currentWeapon.baseDamage);
-		}
+		_currentWeapon.MeleeAttack(hitPoint.position, enemyLayer);
 	}
 
 	private void ShootWeapon(RangedWeapon weapon)
@@ -208,7 +213,7 @@ public class PlayerActions : Singleton<PlayerActions>
 		if (weapon.FireBullet(rayOrigin, rayDestination))
 		{
 			AudioManager.Instance.PlayWithRandomPitch("Bullet Shoot", .7f, 1.2f);
-			gunUI.text = $"{weapon.currentAmmo} / {weapon.reserveAmmo}";
+			weaponUI.text = $"{weapon.currentAmmo} / {weapon.reserveAmmo}";
 			_timeForNextUse = weapon.useSpeed;
 		}
 	}
@@ -224,13 +229,13 @@ public class PlayerActions : Singleton<PlayerActions>
 			yield break;
 		}
 
-		gunUI.text = "RELOADING...";
+		weaponUI.text = "RELOADING...";
 
 		yield return new WaitForSeconds(weapon.reloadTime);
 
 		weapon.StandardReload();
 
-		gunUI.text = $"{weapon.currentAmmo} / {weapon.reserveAmmo}";
+		weaponUI.text = $"{weapon.currentAmmo} / {weapon.reserveAmmo}";
 	}
 
 	private void OnDrawGizmosSelected()

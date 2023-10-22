@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -63,11 +64,11 @@ public class EnemyAI : MonoBehaviour
 		}
 
 		Vector2 direction = (PlayerController.Position - _rb2D.position).normalized;
-		Vector2 newPos = GetNewPosition(direction);
+		Vector2 velocity = CalculateVelocity(direction);
 
 		CheckFlip();
 
-		_rb2D.MovePosition(newPos);
+		_rb2D.velocity = velocity;
 	}
 
 	private void CheckFlip()
@@ -82,7 +83,7 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	private Vector2 GetNewPosition(Vector2 direction)
+	private Vector2 CalculateVelocity(Vector2 direction)
 	{
 		// Enemies will try to avoid each other.
 		Vector2 repelForce = Vector2.zero;
@@ -99,10 +100,10 @@ public class EnemyAI : MonoBehaviour
 			}
 		}
 
-		Vector2 newPos = _rb2D.position + direction * moveSpeed * Time.deltaTime;
-		newPos += repelForce.normalized * repelAmplitude * Time.deltaTime;
+		Vector2 velocity = direction * moveSpeed;
+		velocity += repelForce.normalized * repelAmplitude;
 
-		return newPos;
+		return velocity;
 	}
 
 	private void OnDrawGizmosSelected()

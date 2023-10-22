@@ -22,11 +22,10 @@ public class RangedWeapon : Weapon
 	public RangedWeaponType rangedWeaponType;
 
 	[Header("Effects"), Space]
-	public TrailRenderer bulletTracer;
+	[SerializeField] private TrailRenderer bulletTracer;
 
 	[Header("Bullet Properties"), Space]
 	public float verticalSpread = 0f;
-	public float impactForce;
 	public int bulletsPerShot = 1;
 
 	[Header("Ammo Properties"), Space]
@@ -160,12 +159,15 @@ public class RangedWeapon : Weapon
 	{
 		if (hitInfo.rigidbody != null)
 		{
-			hitInfo.rigidbody.AddForce(-hitInfo.normal * (impactForce / bulletsPerShot));
-			
-			Enemy enemy = hitInfo.rigidbody.GetComponent<Enemy>();
-			if (enemy != null)
+			if (hitInfo.rigidbody.TryGetComponent<EnemyStats>(out EnemyStats enemy))
 			{
-				enemy.TakeDamage(baseDamage);
+				if (hitInfo.collider.CompareTag("WeakpointTrigger"))
+				{
+					int weakpointDamage = Mathf.FloorToInt(baseDamage * weakpointMultiplier);
+					enemy.TakeDamage(weakpointDamage, true, PlayerController.Position, knockBackStrength);
+				}
+				else
+					enemy.TakeDamage(baseDamage, false, PlayerController.Position, knockBackStrength);
 			}
 		}
 

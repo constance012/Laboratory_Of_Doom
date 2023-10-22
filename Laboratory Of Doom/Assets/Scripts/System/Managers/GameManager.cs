@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] private Animator victoryScreen;
 
 	[Space]
-	[SerializeField] private TextMeshProUGUI healthText;
+	[SerializeField] private HealthBar playerHPBar;
 
 	public bool GameDone { get; private set; }
 
@@ -39,11 +39,20 @@ public class GameManager : Singleton<GameManager>
 			Inventory.Instance.OnToggleOff();
 	}
 
-	public void UpdatePlayerHealth(int maxHP, int currentHP)
+	public void UpdatePlayerHealth(int currentHP, int maxHP)
 	{
-		healthText.text = $"{maxHP} / {currentHP}";
+		playerHPBar.SetMaxHealth(maxHP);
+		playerHPBar.SetCurrentHealth(currentHP);
 	}
 
+	public void UpdatePlayerHealth(int initialHP)
+	{
+		playerHPBar.SetMaxHealth(initialHP, true);
+	}
+
+	/// <summary>
+	/// Callback method for the retry button.
+	/// </summary>
 	public void RestartGame()
 	{
 		GameDone = false;
@@ -51,6 +60,9 @@ public class GameManager : Singleton<GameManager>
 		LevelsManager.Instance.LoadSceneAsync("Scenes/Base Scene");
 	}
 
+	/// <summary>
+	/// Callback method for the return to menu button.
+	/// </summary>
 	public void ReturnToMenu()
 	{
 		LevelsManager.Instance.LoadSceneAsync("Scenes/Menu");

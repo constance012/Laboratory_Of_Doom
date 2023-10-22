@@ -87,8 +87,8 @@ public class ItemPickup : Interactable
 			if (_currentItem.category == ItemCategory.Weapon)
 			{
 				Weapon weapon = _currentItem as Weapon;
-				int slotIndex = (int)weapon.weaponSlot;
 
+				int slotIndex = (int)weapon.weaponSlot;
 				PlayerActions.weapons[slotIndex] = weapon;
 			}
 

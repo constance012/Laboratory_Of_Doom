@@ -34,8 +34,8 @@ public class PlayerAiming : MonoBehaviour
 
 		if (mustFlip)
 		{
-			playerGraphics.localScale = playerGraphics.localScale.FlipByScale('x');
-			gunSprite.localScale = gunSprite.localScale.FlipByScale('y');
+			playerGraphics.FlipByScale('x');
+			gunSprite.FlipByScale('y');
 
 			_facingRight = !_facingRight;
 		}

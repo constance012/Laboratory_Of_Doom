@@ -15,12 +15,6 @@ public class InventorySlot : StorageSlot
 		
 		Item droppedItem = cloneData.dragItem;
 
-		if (droppedItem.itemName.Equals("Coin"))
-		{
-			Inventory.Instance.Add(droppedItem, true);
-			return;
-		}
-
 		// If this is an empty slot.
 		if (currentItem == null)
 		{

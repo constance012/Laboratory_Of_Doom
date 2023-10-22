@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public static class VectorExtensions
+public static class TransformExtensions
 {
 	/// <summary>
 	/// Flip the gameobject by alternating the scale between -1 and 1.
@@ -8,29 +8,29 @@ public static class VectorExtensions
 	/// <param name="scale"></param>
 	/// <param name="axis"> A lowercase character represents an axis to flip. </param>
 	/// <returns></returns>
-	public static Vector3 FlipByScale(this Vector3 scale, char axis)
+	public static void FlipByScale(this Transform transform, char axis)
 	{
-		Vector3 temp = scale;
+		Vector3 scale = transform.localScale;
 		axis = char.ToLower(axis);
 
 		switch (axis)
 		{
 			case 'x':
-				temp.x *= -1;
+				scale.x *= -1;
 				break;
 
 			case 'y':
-				temp.y *= -1;
+				scale.y *= -1;
 				break;
 
 			case 'z':
-				temp.z *= -1;
+				scale.z *= -1;
 				break;
 
 			default:
-				return scale;
+				return;
 		}
 
-		return temp;
+		transform.localScale = scale;
 	}
 }

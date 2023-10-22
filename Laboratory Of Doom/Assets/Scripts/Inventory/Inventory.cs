@@ -58,15 +58,15 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 
 			preplacedItems.Clear();
 
-			if (HasAny("Pistol"))
-				PlayerActions.weapons[0] = GetItemByName("Pistol") as Weapon;
+			if (HasAny("Pistol", out Item pistol))
+				PlayerActions.weapons[0] = pistol as Weapon;
 
-			if (HasAny("Knife"))
-				PlayerActions.weapons[1] = GetItemByName("Knife") as Weapon;
+			if (HasAny("Knife", out Item knife))
+				PlayerActions.weapons[1] = knife as Weapon;
 
-			if (HasAny("Flashlight"))
+			if (HasAny("Flashlight", out Item flashlight))
 			{
-				Electronic flashLight = GetItemByName("Flashlight") as Electronic;
+				Electronic flashLight = flashlight as Electronic;
 				flashLight.IsTurnedOn = true;
 				PlayerActions.flashlight = flashLight;
 			}
@@ -136,11 +136,6 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 		return items.Find(item => item.id.Equals(targetID));
 	}
 
-	public override Item GetItemByName(string targetName)
-	{
-		return items.Find(item => item.itemName.Equals(targetName));
-	}
-
 	public override Item[] GetItemsByName(string targetName)
 	{
 		return items.FindAll(item => item.itemName.Equals(targetName)).ToArray();
@@ -149,6 +144,13 @@ public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler
 	public override bool HasAny(string targetName)
 	{
 		return items.Find(item => item.itemName.Equals(targetName)) != null;
+	}
+
+	public override bool HasAny(string targetName, out Item firstFound)
+	{
+		firstFound = items.Find(item => item.itemName.Equals(targetName));
+
+		return firstFound != null;
 	}
 
 	public override bool IsExisting(string targetID)
