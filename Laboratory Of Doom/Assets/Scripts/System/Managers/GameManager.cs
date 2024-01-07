@@ -39,15 +39,14 @@ public class GameManager : Singleton<GameManager>
 			Inventory.Instance.OnToggleOff();
 	}
 
-	public void UpdatePlayerHealth(int currentHP, int maxHP)
+	public void UpdateCurrentHealth(int currentHP)
 	{
-		playerHPBar.SetMaxHealth(maxHP);
 		playerHPBar.SetCurrentHealth(currentHP);
 	}
 
-	public void UpdatePlayerHealth(int initialHP)
+	public void InitializeHealthBar(int initialHP)
 	{
-		playerHPBar.SetMaxHealth(initialHP, true);
+		playerHPBar.SetMaxHealth(initialHP);
 	}
 
 	/// <summary>

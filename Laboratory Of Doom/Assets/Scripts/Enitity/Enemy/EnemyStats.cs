@@ -33,7 +33,7 @@ public class EnemyStats : Entity
 		_contactFilter.layerMask = hitLayer;
 		_contactFilter.useLayerMask = true;
 
-		healthBar.SetMaxHealth(maxHealth, true);
+		healthBar.SetMaxHealth(maxHealth);
 		healthBar.name = $"{gameObject.name} Health Bar";
 	}
 

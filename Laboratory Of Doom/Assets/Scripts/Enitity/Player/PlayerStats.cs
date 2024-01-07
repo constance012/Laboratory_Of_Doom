@@ -26,7 +26,7 @@ public class PlayerStats : Entity
 	{
 		base.Start();
 
-		GameManager.Instance.UpdatePlayerHealth(maxHealth);
+		GameManager.Instance.InitializeHealthBar(maxHealth);
 
 		_invincibilityTime = invincibilityTime;
 		IsDeath = false;
@@ -44,7 +44,7 @@ public class PlayerStats : Entity
 		{
 			base.TakeDamage(amount, weakpointHit, attackerPos, knockBackStrength);
 
-			GameManager.Instance.UpdatePlayerHealth(_currentHealth, maxHealth);
+			GameManager.Instance.UpdateCurrentHealth(_currentHealth);
 
 			_invincibilityTime = invincibilityTime;
 		}
@@ -57,7 +57,7 @@ public class PlayerStats : Entity
 			_currentHealth += amount;
 			_currentHealth = Mathf.Min(_currentHealth, maxHealth);
 
-			GameManager.Instance.UpdatePlayerHealth(_currentHealth, maxHealth);
+			GameManager.Instance.UpdateCurrentHealth(_currentHealth);
 
 			DamageText.Generate(dmgTextPrefab, dmgTextLoc.position, Color.green, false, amount.ToString());
 		}

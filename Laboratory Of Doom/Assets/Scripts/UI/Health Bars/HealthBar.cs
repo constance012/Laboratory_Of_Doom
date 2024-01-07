@@ -62,19 +62,13 @@ public class HealthBar : MonoBehaviour
 		_fxCoroutine = StartCoroutine(PerformEffect());
 	}
 
-	public void SetMaxHealth(int max, bool initialize = false)
+	public void SetMaxHealth(int max, bool initialize = true)
 	{
-		if (mainSlider.maxValue != max)
-		{
-			mainSlider.maxValue = max;
-			fxSlider.maxValue = max;
-		}
-
+		mainSlider.maxValue = max;
+		fxSlider.maxValue = max;
+		
 		if (initialize)
 		{
-			mainSlider.maxValue = max;
-			fxSlider.maxValue = max;
-
 			mainSlider.value = max;
 			fxSlider.value = max;
 			displayText.text = $"{max} / {max}";
