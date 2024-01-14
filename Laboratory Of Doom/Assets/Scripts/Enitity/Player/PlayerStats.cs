@@ -59,7 +59,7 @@ public class PlayerStats : Entity
 
 			GameManager.Instance.UpdateCurrentHealth(_currentHealth);
 
-			DamageText.Generate(dmgTextPrefab, dmgTextLoc.position, Color.green, false, amount.ToString());
+			DamageText.Generate(dmgTextPrefab, dmgTextLoc.position, DamageText.HealingColor, DamageTextStyle.Normal, amount.ToString());
 		}
 	}
 

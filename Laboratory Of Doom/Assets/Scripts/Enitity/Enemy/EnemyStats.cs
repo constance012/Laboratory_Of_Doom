@@ -5,11 +5,15 @@ public class EnemyStats : Entity
 {
 	public string ID { get; private set; }
 
+	[Header("Enemy Brain"), Space]
+	[SerializeField] private EnemyAI brain;
+
 	[Header("Enemy Stats"), Space]
 	[SerializeField] private int damage;
 	[SerializeField] private float knockBackStrength;
 
 	[Space]
+	[SerializeField] private Transform centerPivot;
 	[SerializeField] private Vector2 attackRange;
 	[SerializeField] private LayerMask hitLayer;
 
@@ -22,7 +26,7 @@ public class EnemyStats : Entity
 
 	private void Awake()
 	{
-		_mat = this.GetComponentInChildren<SpriteRenderer>("Graphics").material;
+		_mat = this.GetComponentInChildren<SpriteRenderer>("Graphics (Center)").material;
 		ID = Guid.NewGuid().ToString();
 	}
 
@@ -39,7 +43,7 @@ public class EnemyStats : Entity
 
 	private void LateUpdate()
 	{
-		int hitColliders = Physics2D.OverlapBox(transform.position, attackRange, 0f, _contactFilter, _hitObjects);
+		int hitColliders = Physics2D.OverlapBox(centerPivot.position, attackRange, 0f, _contactFilter, _hitObjects);
 
 		PlayerStats player = null;
 
@@ -63,6 +67,8 @@ public class EnemyStats : Entity
 
 	public override void TakeDamage(int amount, bool weakpointHit, Vector3 attackerPos = default, float knockBackStrength = 0)
 	{
+		brain.Alert();
+
 		base.TakeDamage(amount, weakpointHit, attackerPos, knockBackStrength);
 
 		healthBar.SetCurrentHealth(_currentHealth);
@@ -78,6 +84,6 @@ public class EnemyStats : Entity
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.white;
-		Gizmos.DrawWireCube(transform.position, attackRange);
+		Gizmos.DrawWireCube(centerPivot.position, attackRange);
 	}
 }

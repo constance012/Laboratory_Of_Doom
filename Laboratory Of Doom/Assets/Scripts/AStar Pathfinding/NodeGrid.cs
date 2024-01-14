@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class NodeGrid : MonoBehaviour
 {
-	enum GizmosOption { Path, Grid, All }
-
 	[Header("Gizmos Options"), Space]
-	[SerializeField] private GizmosOption gOption;
+	[SerializeField] private bool displayGizmos;
 	
 	[Header("Terrain Layers"), Space]
 	public LayerMask unwalkableLayers;
@@ -26,7 +24,7 @@ public class NodeGrid : MonoBehaviour
 
 	public int MaxSize => _width * _height;
 
-	private void Start()
+	private void Awake()
 	{
 		_nodeRadius = nodeDiameter / 2f;
 
@@ -68,8 +66,12 @@ public class NodeGrid : MonoBehaviour
 	/// <returns> The corresponding node retrieved from the grid. </returns>
 	public Node FromWorldPosition(Vector3 worldPos)
 	{
-		float percentX = (worldPos.x + gridWorldSize.x / 2) / gridWorldSize.x;
-		float percentY = (worldPos.y + gridWorldSize.y / 2) / gridWorldSize.y;
+		// Finalize the coordinates based on the grid world position.
+		float finalizedX = worldPos.x - transform.position.x;
+		float finalizedY = worldPos.y - transform.position.y;
+
+		float percentX = (finalizedX + gridWorldSize.x / 2) / gridWorldSize.x;
+		float percentY = (finalizedY + gridWorldSize.y / 2) / gridWorldSize.y;
 
 		percentX = Mathf.Clamp01(percentX);
 		percentY = Mathf.Clamp01(percentY);
@@ -78,6 +80,12 @@ public class NodeGrid : MonoBehaviour
 		int yCoordinate = Mathf.RoundToInt((_height - 1) * percentY);
 
 		return _grid[xCoordinate, yCoordinate];
+	}
+
+	public void SetCellWalkableState(Vector3 worldPos, bool walkable)
+	{
+		Node cell = FromWorldPosition(worldPos);
+		cell.walkable = walkable;
 	}
 
 	private void CreateGrid()
@@ -98,50 +106,19 @@ public class NodeGrid : MonoBehaviour
 		}
 	}
 
-	// Subject to be removed later.
-	public List<Node> path;
-
 	private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1f));
 
-		if (_grid == null)
-			return;
-
-		switch (gOption)
+		if (_grid != null && displayGizmos)
 		{
-			case GizmosOption.Path:
-				if (path != null)
-				{
-					foreach (Node node in path)
-					{
-						Gizmos.color = Color.green;
-						Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - .1f));
-					}
-				}
-				break;
-			
-			case GizmosOption.Grid:
-				foreach (Node node in _grid)
-				{
-					Gizmos.color = node.walkable ? Color.white : Color.red;
-					Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - .1f));
-				}
-				break;
+			Vector3 cubeSize = Vector3.one * (nodeDiameter - .1f);
 
-			case GizmosOption.All:
-				foreach (Node node in _grid)
-				{
-					Gizmos.color = node.walkable ? Color.white : Color.red;
-
-					if (path != null && path.Contains(node))
-					{
-						Gizmos.color = Color.green;
-					}
-
-					Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - .1f));
-				}
-				break;
+			foreach (Node node in _grid)
+			{
+				Gizmos.color = node.walkable ? Color.white : Color.red;
+				Gizmos.DrawCube(node.worldPosition, cubeSize);
+			}
 		}
 	}
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InventorySlot : StorageSlot
+public class InventorySlot : ContainerSlot
 {
 	/// <summary>
 	/// This method used to catch the dragged item from another slot.

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class StorageSlot : MonoBehaviour
+public abstract class ContainerSlot : MonoBehaviour
 {
 	[Header("Current Item")]
 	[Space]
@@ -74,10 +74,10 @@ public abstract class StorageSlot : MonoBehaviour
 
 	public abstract void OnDrop(GameObject shipper);
 
-	protected void SwapSlotIndexes<TSlot>(ClickableObject cloneData) where TSlot : StorageSlot
+	protected void SwapSlotIndexes<TSlot>(ClickableObject cloneData) where TSlot : ContainerSlot
 	{
 		Item droppedItem = cloneData.dragItem;
-		ItemStorage currentStorage = cloneData.currentStorage;
+		ItemContainer currentStorage = cloneData.currentStorage;
 
 		int senderIndex = droppedItem.slotIndex;
 		int destinationIndex = currentItem.slotIndex;

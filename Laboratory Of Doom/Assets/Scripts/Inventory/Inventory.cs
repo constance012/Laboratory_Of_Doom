@@ -5,7 +5,7 @@ using CSTGames.DataPersistence;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class Inventory : ItemStorage, ISaveDataTransceiver, IPointerEnterHandler, IPointerExitHandler
+public class Inventory : ItemContainer, ISaveDataTransceiver, IPointerEnterHandler, IPointerExitHandler
 {
 	public static Inventory Instance { get; private set; }
 

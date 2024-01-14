@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 853516249058676358}
   - component: {fileID: 434513741823560155}
+  - component: {fileID: 3678600237551793202}
+  - component: {fileID: 7128165890839101503}
   - component: {fileID: 7667534147120605057}
-  - component: {fileID: 4329613364335984719}
+  - component: {fileID: 1335752940479269903}
   m_Layer: 0
   m_Name: Damage Text
   m_TagString: Untagged
@@ -47,6 +49,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002002582291494483}
   m_CullTransparentMesh: 1
+--- !u!95 &3678600237551793202
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002002582291494483}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4881bc8ff4bc6cc408337366b6e85fd7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &7128165890839101503
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002002582291494483}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &7667534147120605057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbf24908bfd232445895477359386d23, type: 2}
   m_sharedMaterial: {fileID: 8664621287886028397, guid: dbf24908bfd232445895477359386d23, type: 2}
@@ -136,7 +171,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4329613364335984719
+--- !u!114 &1335752940479269903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,9 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 7667534147120605057}
-  disappearSpeed: 3
   maxLifeTime: 1
-  maxVelocity: 1
+  maxVelocity: 2
   velocityCurve:
     serializedVersion: 2
     m_Curve:
@@ -176,4 +210,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startFontSize: 0.2
+  animator: {fileID: 3678600237551793202}

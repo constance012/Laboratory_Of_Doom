@@ -35,7 +35,8 @@ public abstract class Entity : MonoBehaviour
 		_currentHealth -= amount;
 		_currentHealth = Mathf.Max(0, _currentHealth);
 
-		DamageText.Generate(dmgTextPrefab, dmgTextLoc.position, weakpointHit, amount.ToString());
+		DamageTextStyle style = weakpointHit ? DamageTextStyle.Critical : DamageTextStyle.Normal;
+		DamageText.Generate(dmgTextPrefab, dmgTextLoc.position, style, amount.ToString());
 
 		StartCoroutine(TriggerDamageFlash());
 		StartCoroutine(BeingKnockedBack(attackerPos, knockBackStrength));
@@ -80,6 +81,7 @@ public abstract class Entity : MonoBehaviour
 
 		rb2D.velocity = Vector3.zero;
 		movementBehaviour.enabled = false;
+		movementBehaviour.StopAllCoroutines();
 
 		Vector2 direction = transform.position - attackerPos;
 		float knockBackStrength = strength * (1f - knockBackRes);

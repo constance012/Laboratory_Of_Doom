@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class ItemStorage : MonoBehaviour
+public abstract class ItemContainer : MonoBehaviour
 {
 	public UnityEvent onItemChanged { get; private set; } = new UnityEvent();
 

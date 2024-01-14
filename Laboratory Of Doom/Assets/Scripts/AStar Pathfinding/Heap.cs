@@ -110,8 +110,6 @@ public class Heap<T> where T : IHeapItem<T>
 		_items[a.HeapIndex] = b;
 		_items[b.HeapIndex] = a;
 
-		int temp = a.HeapIndex;
-		a.HeapIndex = b.HeapIndex;
-		b.HeapIndex = temp;
+		(a.HeapIndex, b.HeapIndex) = (b.HeapIndex, a.HeapIndex);
 	}
 }

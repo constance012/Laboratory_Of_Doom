@@ -86,6 +86,9 @@ public class LevelsNavigationDoor : Interactable
 			hasInteracted = true;
 
 			spriteRenderer.sprite = openSprite;
+			gameObject.layer = LayerMask.NameToLayer("Door");
+
+			PathRequester.Instance.ChangeGridCellState(transform.position, true);
 			
 			Enter();
 		}

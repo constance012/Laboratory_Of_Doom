@@ -9,7 +9,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
 	[Header("Storage Type")]
 	[Space]
 	public StorageType storageType;
-	[ReadOnly] public ItemStorage currentStorage;
+	[ReadOnly] public ItemContainer currentStorage;
 
 	[Header("References")]
 	[Space]
@@ -19,10 +19,10 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
 
 	public bool IsChestSlot => storageType == StorageType.Chest;
 	public bool IsInventorySlot => storageType == StorageType.Inventory;
-	public bool FromSameStorageSlot<TSlot>() where TSlot : StorageSlot => _currentSlot.GetType() == typeof(TSlot);
+	public bool FromSameStorageSlot<TSlot>() where TSlot : ContainerSlot => _currentSlot.GetType() == typeof(TSlot);
 
 	// Private fields.
-	private StorageSlot _currentSlot;
+	private ContainerSlot _currentSlot;
 	private Image _icon;
 	private TooltipTrigger _tooltip;
 
@@ -51,7 +51,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
 		_tooltip = GetComponentInParent<TooltipTrigger>();
 
 		currentStorage = GetComponentInParent<Inventory>();
-		_currentSlot = GetComponentInParent<StorageSlot>();
+		_currentSlot = GetComponentInParent<ContainerSlot>();
 		
 		player = GameObject.FindWithTag("Player").transform;
 	}
@@ -117,10 +117,10 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
 
 	public void DisposeItem()
 	{
-		Debug.Log("Dispose item.");
-
 		if (Clone == null)
 			return;
+
+		Debug.Log("Disposing item...");
 
 		Item disposeItem = Clone.GetComponent<ClickableObject>().dragItem;
 
