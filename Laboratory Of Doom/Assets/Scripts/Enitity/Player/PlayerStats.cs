@@ -44,6 +44,7 @@ public class PlayerStats : Entity
 		{
 			base.TakeDamage(amount, weakpointHit, attackerPos, knockBackStrength);
 
+			CameraShaker.Instance.ShakeCamera(2.5f, .1f);
 			GameManager.Instance.UpdateCurrentHealth(_currentHealth);
 
 			_invincibilityTime = invincibilityTime;

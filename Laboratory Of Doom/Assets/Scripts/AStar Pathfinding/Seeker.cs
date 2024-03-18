@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Seeker : MonoBehaviour

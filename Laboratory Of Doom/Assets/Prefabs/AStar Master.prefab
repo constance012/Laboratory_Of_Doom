@@ -50,7 +50,7 @@ MonoBehaviour:
   unwalkableLayers:
     serializedVersion: 2
     m_Bits: 256
-  gridWorldSize: {x: 20, y: 20}
+  gridWorldSize: {x: 70, y: 40}
   nodeDiameter: 1
   castPrecision: 0.025
 --- !u!114 &6578697333395263583

@@ -19825,22 +19825,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8048538393717503718, guid: a1f60863d3d3aaf4d9c6c861ba205c70, type: 3}
-      propertyPath: displayGizmos
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048538393717503718, guid: a1f60863d3d3aaf4d9c6c861ba205c70, type: 3}
-      propertyPath: gridWorldSize.x
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048538393717503718, guid: a1f60863d3d3aaf4d9c6c861ba205c70, type: 3}
-      propertyPath: gridWorldSize.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048538393717503718, guid: a1f60863d3d3aaf4d9c6c861ba205c70, type: 3}
-      propertyPath: unwalkableLayers.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

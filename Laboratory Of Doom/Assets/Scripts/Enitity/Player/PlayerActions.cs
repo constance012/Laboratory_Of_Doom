@@ -17,6 +17,7 @@ public class PlayerActions : Singleton<PlayerActions>
 	[Header("Ranged Weapon"), Space]
 	[SerializeField] private GameObject primaryWeapon;
 	[SerializeField] private Transform firePoint;
+	[SerializeField] private GameObject muzzleFlash;
 
 	[Header("Melee Weapon"), Space]
 	[SerializeField] private GameObject secondaryWeapon;
@@ -213,6 +214,9 @@ public class PlayerActions : Singleton<PlayerActions>
 		if (weapon.FireBullet(rayOrigin, rayDestination))
 		{
 			AudioManager.Instance.PlayWithRandomPitch("Bullet Shoot", .7f, 1.2f);
+			CameraShaker.Instance.ShakeCamera(2f, .15f);
+			muzzleFlash.SetActive(true);
+
 			weaponUI.text = $"{weapon.currentAmmo} / {weapon.reserveAmmo}";
 			_timeForNextUse = weapon.useSpeed;
 		}
